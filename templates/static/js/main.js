@@ -9,8 +9,8 @@ let segundoResultado = null;
 let movimientos = 0;
 let aciertos = 0;
 let temporizador = false;
-let timer = 40;
-let timerInicial = 40;
+let timer = 70;
+let timerInicial = 70;
 let tiempoRegresivo = null;
 
 //Variables que contendrán archivos de audio
@@ -28,7 +28,7 @@ let refresh = document.getElementById('refresh');
 
 // Declaramos un arreglo de números que contendrán todos los números
 // posibles que se van a encontrar en nuestras tarjetas
-let numeros = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
+let numeros = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10];
 
 // Desordenaremos los números de nuestro arreglo con sort de acuerdo a una una función determinada
 numeros = numeros.sort(() => { return Math.random() - 0.5 });
@@ -53,7 +53,7 @@ function contarTiempo() {
 
 //Función para bloquear tarjetas cuando se haya terminado el tiempo
 function bloquearTarjetas() {
-    for (let i = 0; i <= 15; i++) {
+    for (let i = 0; i <= 19; i++) {
         let tarjetaBloqueada = document.getElementById(i);
         tarjetaBloqueada.innerHTML = `<img src="/static/images/${numeros[i]}.png" alt="">`;
         tarjetaBloqueada.disabled = true;
@@ -111,7 +111,7 @@ function destapar(id) {
             mostrarAciertos.innerHTML = `Aciertos: ${aciertos}`;
 
             //Verificar si los aciertos son iguales a 8 y mostrar mensajes finales
-            if (aciertos == 8) {
+            if (aciertos == 10) {
                 clearInterval(tiempoRegresivo);
                 mostrarAciertos.innerHTML = `Aciertos: ${aciertos} &#128513;`;
                 mostrarTiempo.innerHTML = `Asombroso &#128077; solo demoráste ${timerInicial - timer} segundos`;
